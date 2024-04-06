@@ -1,0 +1,6 @@
+{
+    "AutomatedSetup": true,
+    "PhotoLibraryUsageDescription": "Приложение запрашивает доступ к галерее для работы с ними.",
+    "PhotoLibraryAdditionsUsageDescription": "Приложение запрашивает доступ к галерее для работы с ними.",
+    "DontAskLimitedPhotosPermissionAutomaticallyOnIos14": true
+}

@@ -1,6 +1,8 @@
-using System.IO;
 using UnityEngine;
+using System;
+using System.IO;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PhoneCamera : MonoBehaviour
 {
@@ -8,10 +10,9 @@ public class PhoneCamera : MonoBehaviour
     private WebCamTexture backCam;
     private Texture defaultBack;
 
-
     public RawImage backGround;
     public AspectRatioFitter fit;
-    public GameObject cameraPanel;
+    public GameObject cameraPanel, menuPanel;
 
     private void Start()
     {
@@ -59,13 +60,62 @@ public class PhoneCamera : MonoBehaviour
         cameraPanel.SetActive(false);
         if (camAvailable) // Если камера активирована, деактивируем её
         {
-            
             backCam.Stop();
             backGround.texture = defaultBack;
             camAvailable = false;
         }
     }
 
+    public void TakePhoto()
+    {
+        StartCoroutine(TakeAPhoto());
+    }
+
+    IEnumerator TakeAPhoto()
+    {
+        cameraPanel.SetActive(false);
+        menuPanel.SetActive(false);
+        // Wait until rendering is complete, before taking the photo.
+        yield return new WaitForEndOfFrame();
+
+        // Create a new texture to store the photo
+        Texture2D photo = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+
+        // Read the current screen contents into the texture
+        photo.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        photo.Apply();
+
+        // Encode the photo as PNG
+        byte[] bytes = photo.EncodeToPNG();
+        Destroy(photo);
+
+        // Define the file path using the persistent data path
+        string fileName = DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
+        string filePath = Path.Combine(Application.persistentDataPath, fileName);
+
+        // Write the PNG data to the file
+        File.WriteAllBytes(filePath, bytes);
+        cameraPanel.SetActive(true);
+        menuPanel.SetActive(true);
+        // Save to gallery
+        NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(bytes, "MyGallery", fileName, (success, path) =>
+        {
+            if (success)
+            {
+                Debug.Log("Photo saved to gallery: " + path);
+            }
+            else
+            {
+                Debug.Log("Failed to save photo to gallery");
+            }
+        });
+
+        // If saving to gallery fails, log an error
+        if (permission != NativeGallery.Permission.Granted)
+        {
+            Debug.LogError("Permission not granted for saving photo to gallery");
+        }
+    }
     private void Update()
     {
         if (!camAvailable)
@@ -84,3 +134,6 @@ public class PhoneCamera : MonoBehaviour
         backGround.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
     }
 }
+
+
+
