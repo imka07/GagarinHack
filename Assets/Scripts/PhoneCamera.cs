@@ -13,6 +13,7 @@ public class PhoneCamera : MonoBehaviour
     public RawImage backGround;
     public AspectRatioFitter fit;
     public GameObject cameraPanel, menuPanel;
+    public GameObject DocumentConteinerPrefab, DocumentSpawnParent;
 
     private void Start()
     {
@@ -24,7 +25,6 @@ public class PhoneCamera : MonoBehaviour
     {
         if (!camAvailable) // Если камера еще не активирована
         {
-            cameraPanel.SetActive(true);
             WebCamDevice[] devices = WebCamTexture.devices;
             if (devices.Length == 0)
             {
@@ -110,12 +110,27 @@ public class PhoneCamera : MonoBehaviour
             }
         });
 
+
         // If saving to gallery fails, log an error
         if (permission != NativeGallery.Permission.Granted)
         {
             Debug.LogError("Permission not granted for saving photo to gallery");
         }
+
+        GameObject container = Instantiate(DocumentConteinerPrefab, DocumentSpawnParent.transform);
+        RawImage rawImageComponent = container.GetComponent<RawImage>();
+
+        if (rawImageComponent != null)
+        {
+            rawImageComponent.texture = photo; // Устанавливаем фотографию в компонент RawImage
+        }
+        else
+        {
+            Debug.LogError("RawImage component not found in DocumentConteinerPrefab.");
+        }
+
     }
+
     private void Update()
     {
         if (!camAvailable)
