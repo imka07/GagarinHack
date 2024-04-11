@@ -24,5 +24,10 @@ public class MainUIController : MonoBehaviour
         instance = this;
     }
 
- 
+    public void MobileKeyBoard()
+    {
+        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, true, true);
+    }
+
+
 }

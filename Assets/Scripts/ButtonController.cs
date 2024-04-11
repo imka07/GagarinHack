@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    public GameObject panelToActivate; // ссылка на панель, которую нужно активировать
+    public GameObject[] panelToActivate; // ссылка на панель, которую нужно активировать
     public MainUIController panelManager; // ссылка на менеджер панелей
 
     void Start()
@@ -14,7 +14,10 @@ public class ButtonController : MonoBehaviour
 
     void OnButtonClick()
     {
-        panelManager.DisableAllPanelsExcept(panelToActivate);
-        panelToActivate.SetActive(true);
+        for (int i = 0; i < panelToActivate.Length; i++)
+        {
+            panelManager.DisableAllPanelsExcept(panelToActivate[i]);
+            panelToActivate[i].SetActive(true);
+        }
     }
 }

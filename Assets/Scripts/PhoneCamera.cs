@@ -10,6 +10,7 @@ public class PhoneCamera : MonoBehaviour
     private WebCamTexture backCam;
     private Texture defaultBack;
 
+
     public RawImage backGround;
     public AspectRatioFitter fit;
     public GameObject cameraPanel, menuPanel;
@@ -74,7 +75,6 @@ public class PhoneCamera : MonoBehaviour
     IEnumerator TakeAPhoto()
     {
         cameraPanel.SetActive(false);
-        menuPanel.SetActive(false);
         // Wait until rendering is complete, before taking the photo.
         yield return new WaitForEndOfFrame();
 
@@ -96,7 +96,6 @@ public class PhoneCamera : MonoBehaviour
         // Write the PNG data to the file
         File.WriteAllBytes(filePath, bytes);
         cameraPanel.SetActive(true);
-        menuPanel.SetActive(true);
         // Save to gallery
         NativeGallery.Permission permission = NativeGallery.SaveImageToGallery(bytes, "MyGallery", fileName, (success, path) =>
         {
@@ -118,18 +117,26 @@ public class PhoneCamera : MonoBehaviour
         }
 
         GameObject container = Instantiate(DocumentConteinerPrefab, DocumentSpawnParent.transform);
+
+        // Получаем компонент RawImage из объекта DocumentConteinerPrefab
         RawImage rawImageComponent = container.GetComponent<RawImage>();
 
+        // Проверяем, найден ли компонент RawImage
         if (rawImageComponent != null)
         {
-            rawImageComponent.texture = photo; // Устанавливаем фотографию в компонент RawImage
+            // Устанавливаем текстуру снимка с камеры в компонент RawImage
+            rawImageComponent.texture = backCam;
         }
         else
         {
             Debug.LogError("RawImage component not found in DocumentConteinerPrefab.");
         }
 
+
+
     }
+
+
 
     private void Update()
     {
