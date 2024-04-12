@@ -14,7 +14,9 @@ public class PhoneCamera : MonoBehaviour
     public RawImage backGround;
     public AspectRatioFitter fit;
     public GameObject cameraPanel, menuPanel;
-    public GameObject DocumentConteinerPrefab, DocumentSpawnParent;
+    public GameObject DocumentConteinerPrefab;
+    public Transform[] DocumentSpawnParent;
+    int DocumentIndex;
 
     private void Start()
     {
@@ -116,24 +118,31 @@ public class PhoneCamera : MonoBehaviour
             Debug.LogError("Permission not granted for saving photo to gallery");
         }
 
-        GameObject container = Instantiate(DocumentConteinerPrefab, DocumentSpawnParent.transform);
 
-        // Получаем компонент RawImage из объекта DocumentConteinerPrefab
-        RawImage rawImageComponent = container.GetComponent<RawImage>();
+                GameObject container = Instantiate(DocumentConteinerPrefab, DocumentSpawnParent[DocumentIndex].transform);
 
-        // Проверяем, найден ли компонент RawImage
-        if (rawImageComponent != null)
-        {
-            // Устанавливаем текстуру снимка с камеры в компонент RawImage
-            rawImageComponent.texture = backCam;
-        }
-        else
-        {
-            Debug.LogError("RawImage component not found in DocumentConteinerPrefab.");
-        }
+                // Получаем компонент RawImage из объекта DocumentConteinerPrefab
+                RawImage rawImageComponent = container.GetComponent<RawImage>();
+
+                // Проверяем, найден ли компонент RawImage
+                if (rawImageComponent != null)
+                {
+                    // Устанавливаем текстуру снимка с камеры в компонент RawImage
+                    rawImageComponent.texture = backCam;
+                }
+                else
+                {
+                    Debug.LogError("RawImage component not found in DocumentConteinerPrefab.");
+                }
+       
 
 
 
+    }
+
+    public void ChangeDocIndex(int index)
+    {
+        DocumentIndex = index;
     }
 
 
