@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class MainUIController : MonoBehaviour
 {
     public GameObject[] panels; // массив всех панелей
     public static MainUIController instance;
+    public Text yourUITextComponent;
 
     public void DisableAllPanelsExcept(GameObject activePanel)
     {
@@ -18,6 +20,7 @@ public class MainUIController : MonoBehaviour
             }
         }
     }
+
 
     private void Start()
     {
