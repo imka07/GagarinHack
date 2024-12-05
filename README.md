@@ -19,6 +19,17 @@
 
 <div align="center">
     <img src="StackIcons/Nuxt.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Postgres.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Js.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/prisma orm.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Vue.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/TypeScript.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Tailwind.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Figma.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Needle.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Vercel.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Neon.svg" alt="Stack" style="width: 80px; height: auto;">
+    <img src="StackIcons/Unity.svg" alt="Stack" style="width: 80px; height: auto;">
 </div>
 
 
