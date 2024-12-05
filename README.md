@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-    <img src="static/logo.svg" alt="Logo" width="80" height="80">
+    <img src="FIS Logo (1).svg" alt="Logo" width="80" height="80">
 
   <h3 align="center">МисПроект</h3>
   <h4>MISIS X Narton Union</h4>
