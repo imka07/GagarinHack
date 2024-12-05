@@ -2,14 +2,14 @@
 <div align="center">
     <img src="static/logo.svg" alt="Logo" width="80" height="80">
 
-  <h3 align="center">Айвазовский</h3>
-  <h4>MISIS 52</h4>
+  <h3 align="center">МисПроект</h3>
+  <h4>MISIS X Narton Union</h4>
   <p align="center">
-    На волнах цифрового искусства!
+    Информационная система управления проектами в строительстве
     <br>
-    <a href="https://disk.yandex.ru/i/t0TaaEokOw07Iw"><strong>Презентация »</strong></a>
+    <a href="https://drive.google.com/file/d/1Tx2Z2h_0RAesdNH7gr8cXL_F_0Zew2su/view?usp=drive_link"><strong>Презентация »</strong></a>
     <br />
-    <a href="https://open-your-smolensk.ru/"><strong>Попробовать »</strong></a>
+    <a href="https://hackathon-narton-union.vercel.app/projects"><strong>Попробовать »</strong></a>
     <br />
     </p>
 </div>
