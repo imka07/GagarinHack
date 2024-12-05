@@ -18,7 +18,7 @@
 
 
 <div align="center">
-    <img src="StackIcons/Nuxt.svg" alt="Stack" style="width: 150px; height: auto;">
+    <img src="StackIcons/Nuxt.svg" alt="Stack" style="width: 80px; height: auto;">
 </div>
 
 
