@@ -79,6 +79,6 @@
 
 [Фунг Туан Ань](https://github.com/Himura-777) - **Frontend**
 
-[Гулякина Аня](https://t.me/anyagulyakina) - **UI / UX**
+[Гулякина Аня](https://dprofile.ru/anyagulyakina) - **UI / UX**
 
 [Калмыков Али](https://t.me/user567456) - **UAV Engineer**
